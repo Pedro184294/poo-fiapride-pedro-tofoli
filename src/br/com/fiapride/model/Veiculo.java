@@ -17,4 +17,9 @@ public class Veiculo {
     public String getPlaca() {
         return placa;
     }
+
+    // MÉTODO GENÉRICO
+    public String emitirSom() {
+        return "Som genérico de veículo";
+    }
 }

@@ -1,6 +1,8 @@
 package br.com.cp3.fiapride;
 
 import br.com.fiapride.model.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Principal {
 
@@ -9,14 +11,16 @@ public class Principal {
         Carro carro = new Carro("Toyota Corolla", "ABC-1234", 4);
         Moto moto = new Moto("Honda CG", "XYZ-9999", true);
 
-        Passageiro p1 = new Passageiro("Ana", 50.0, carro);
+        // LISTA POLIMÓRFICA
+        List<Veiculo> veiculos = new ArrayList<>();
 
-        System.out.println("=== PASSAGEIRO COM CARRO ===");
-        p1.exibirInformacoes();
+        veiculos.add(carro);
+        veiculos.add(moto);
 
-        System.out.println("\n=== TESTE MOTO ===");
-        System.out.println("Modelo: " + moto.getModelo());
-        System.out.println("Placa: " + moto.getPlaca());
-        System.out.println("Tem baú: " + moto.isTemBau());
+        System.out.println("=== TESTE POLIMORFISMO ===");
+
+        for (Veiculo v : veiculos) {
+            System.out.println(v.getModelo() + " - " + v.emitirSom());
+        }
     }
 }
