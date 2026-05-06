@@ -14,7 +14,7 @@
 
 Este projeto é o resultado do aprendizado nas aulas 1-9 de Programação Orientada a Objetos, onde desenvolvemos o sistema **FiapRide** (aplicativo de mobilidade urbana).
 
-O sistema simula um ambiente onde passageiros utilizam veículos (como carros e motos), aplicando conceitos fundamentais de orientação a objetos como encapsulamento, herança, polimorfismo, abstração e interfaces.
+O sistema simula passageiros, veículos (carro e moto) e operações como saldo, pagamento e comportamento dos veículos, aplicando conceitos fundamentais de OO.
 
 ---
 
@@ -36,91 +36,117 @@ O sistema simula um ambiente onde passageiros utilizam veículos (como carros e 
 
 ### Aula 1 - Classes e Objetos
 
-**Sua Resposta:**
-Criar uma classe como Passageiro permite organizar melhor os dados e comportamentos relacionados a um usuário do sistema. Se utilizássemos apenas variáveis soltas no main, o código ficaria desorganizado e difícil de manter, principalmente com muitos usuários. Em um sistema com 1 milhão de usuários, seria inviável controlar tudo manualmente. A classe permite reutilização, organização e escalabilidade do sistema.
+**Pergunta:**
+Por que precisamos criar uma classe `Passageiro`? Não seria mais fácil apenas criar variáveis soltas no main?
+
+**Resposta:**
+Criar uma classe permite organizar melhor os dados e comportamentos relacionados ao passageiro. Usar variáveis soltas funciona apenas para poucos casos, mas em um sistema com muitos usuários se torna inviável. A classe permite reutilização, organização, manutenção e escalabilidade do sistema.
 
 ---
 
 ### Aula 2 - Métodos
 
-**Sua Resposta:**
-Criar métodos como adicionarSaldo() garante que existam regras de negócio aplicadas ao alterar o saldo. Se qualquer programador pudesse alterar diretamente o valor, poderiam ocorrer erros como adicionar valores negativos ou inconsistências. Os métodos garantem segurança, controle e evitam falhas críticas no sistema.
+**Pergunta:**
+Por que criar um método como `adicionarSaldo()` ao invés de alterar diretamente o atributo?
+
+**Resposta:**
+O método garante que regras de negócio sejam respeitadas, como impedir valores negativos. Se qualquer programador alterasse diretamente o saldo, o sistema poderia ficar inconsistente. Métodos trazem segurança e controle sobre os dados.
 
 ---
 
 ### Aula 3 - Encapsulamento
 
-**Sua Resposta:**
-O get é seguro porque apenas permite leitura do valor, enquanto deixar o atributo público permitiria alterações diretas sem validação. Isso é perigoso porque pode gerar dados inconsistentes. É como entregar uma cópia de um documento versus o original: com o original, qualquer um pode alterar e comprometer a integridade da informação.
+**Pergunta:**
+Por que é seguro ter getters públicos, mas perigoso ter atributos públicos?
+
+**Resposta:**
+Getters apenas permitem leitura dos dados, enquanto atributos públicos permitem alteração direta sem validação. Isso pode gerar erros e inconsistências. O encapsulamento protege os dados e garante que alterações sejam feitas de forma controlada.
 
 ---
 
 ### Aula 4 - Construtores
 
-**Sua Resposta:**
-Gerar getters e setters para tudo é um erro porque expõe demais o objeto, permitindo alterações indevidas. No caso de um veículo, por exemplo, o modelo não deve ser alterado após criação. Já a placa exige um processo controlado, não apenas uma simples mudança de valor. Isso protege o sistema contra fraudes e mantém a lógica consistente com o mundo real.
+**Pergunta:**
+Por que não devemos gerar getters e setters para tudo automaticamente?
+
+**Resposta:**
+Nem todos os atributos devem ser alteráveis. Por exemplo, o modelo de um veículo não deve mudar após criação. Criar setters para tudo pode abrir brechas para erros e fraudes. O construtor garante que o objeto seja criado corretamente desde o início.
 
 ---
 
 ### Aula 5 - Associação
 
-**Sua Resposta:**
-Usar o objeto Passageiro ao invés de apenas uma String permite acessar todos os dados e comportamentos dele, como saldo. Se fosse apenas uma String, não seria possível realizar operações como cobrança ao final da viagem. A associação permite que os objetos interajam de forma completa e realista dentro do sistema.
+**Pergunta:**
+Por que usar o objeto Passageiro em vez de apenas uma String com o nome?
+
+**Resposta:**
+Usar o objeto permite acessar seus dados e comportamentos, como saldo. Se fosse apenas uma String, não seria possível realizar operações como cobrança. A associação permite interação real entre objetos.
 
 ---
 
 ### Aula 6 - Herança
 
-**Sua Resposta:**
-O Java não permite acesso direto aos atributos privados da classe mãe para proteger o encapsulamento. Isso garante que as regras definidas na classe base sejam respeitadas. Esse conceito evita alterações indevidas e mantém a integridade dos dados, seguindo o princípio de proteção do estado do objeto.
+**Pergunta:**
+Por que o Java não permite acesso direto aos atributos privados da classe mãe?
+
+**Resposta:**
+Para proteger o encapsulamento. Isso garante que as regras definidas na classe mãe sejam respeitadas e evita alterações indevidas nos dados, mantendo a integridade do sistema.
 
 ---
 
 ### Aula 7 - Polimorfismo
 
-**Sua Resposta:**
-Não seria possível chamar o método se ele não existisse na classe mãe. O contrato precisa estar definido na base da hierarquia para garantir que todas as classes filhas implementem esse comportamento. Isso permite que o polimorfismo funcione corretamente, garantindo flexibilidade e reutilização de código.
+**Pergunta:**
+Por que o método precisa existir na classe mãe?
+
+**Resposta:**
+Porque o polimorfismo depende de um contrato comum. Sem o método na classe mãe, não seria possível chamá-lo de forma genérica. Isso garante que todas as subclasses implementem o comportamento.
 
 ---
 
 ### Aula 8 - Classes Abstratas
 
-**Sua Resposta:**
-Não faz sentido existir um objeto genérico “Veiculo” sem um tipo específico. Tornar a classe abstrata impede que ela seja instanciada diretamente. Se não fizermos isso, alguém poderia criar um objeto inválido, quebrando a lógica do sistema. O Java exige isso explicitamente para garantir maior controle e clareza no código.
+**Pergunta:**
+Por que transformar a classe Veiculo em abstrata?
+
+**Resposta:**
+Porque não faz sentido criar um veículo genérico sem tipo. Tornar a classe abstrata impede sua instância direta e garante que apenas classes específicas sejam utilizadas, evitando erros no sistema.
 
 ---
 
 ### Aula 9 - Interfaces
 
-**Sua Resposta:**
-Java permite múltiplas interfaces porque elas representam contratos, não implementação. Se houvesse herança múltipla, poderia haver conflito de métodos com o mesmo nome. As interfaces resolvem isso pois obrigam cada classe a implementar sua própria versão do método, evitando ambiguidade e mantendo o sistema organizado.
+**Pergunta:**
+Por que Java permite múltiplas interfaces mas não múltipla herança?
+
+**Resposta:**
+Porque interfaces definem contratos, não implementação. Isso evita conflitos de métodos. Cada classe implementa sua própria versão, garantindo flexibilidade e organização sem ambiguidades.
 
 ---
 
 ## Desafios Técnicos Implementados
 
-### Desafio Pessoal (Seu Projeto)
+### Desafio Pessoal
 
-**Qual foi o domínio que você escolheu para seu projeto pessoal?**
+**Domínio escolhido:**
 Sistema de mobilidade urbana (FiapRide)
 
-**Quais classes você criou?**
+**Classes criadas:**
 Passageiro, Veiculo, Carro, Moto, Pagavel
 
-**Qual foi o maior desafio técnico que você enfrentou?**
-O maior desafio foi integrar todos os conceitos de orientação a objetos de forma correta, principalmente herança, polimorfismo e interfaces. No início, foi difícil entender como as classes se relacionavam e como aplicar corretamente o conceito de classe abstrata junto com interfaces. Também houve dificuldade em organizar o código para manter boas práticas de encapsulamento. Esse problema foi resolvido revisando os conceitos e implementando passo a passo, garantindo que cada parte funcionasse corretamente antes de avançar.
+**Maior desafio:**
+Integrar todos os conceitos de OO corretamente, principalmente herança, polimorfismo e interfaces. Foi necessário entender como as classes se relacionam e como organizar o código de forma eficiente. Resolvi isso testando cada parte separadamente e depois integrando tudo.
 
 ---
 
 ## Conclusão
 
-**O que você aprendeu nestas 9 aulas?**
-Aprendi os principais conceitos de programação orientada a objetos e como aplicá-los na prática. Entendi como organizar melhor o código, reutilizar componentes e criar sistemas mais estruturados e escaláveis.
+**O que você aprendeu?**
+Aprendi a aplicar conceitos fundamentais de orientação a objetos na prática, criando um sistema organizado, reutilizável e escalável.
 
-**Qual conceito foi mais difícil de entender?**
-O conceito de polimorfismo e classes abstratas foi o mais desafiador, pois exige uma compreensão mais profunda de como as classes se relacionam. Superei isso praticando e testando diferentes implementações no código.
+**Maior dificuldade:**
+Polimorfismo e classes abstratas, pois exigem entender bem a relação entre classes. Superei praticando bastante.
 
-**O que você melhoraria no seu projeto se pudesse refazer?**
-Eu melhoraria a organização dos pacotes e criaria mais classes para deixar o sistema ainda mais próximo de um cenário real, como adicionar uma classe de Viagem ou Sistema de Pagamento mais detalhado.
+**O que melhoraria?**
+Adicionaria mais funcionalidades, como sistema de viagens e pagamentos mais detalhado, além de melhorar a organização do projeto.
 
----
