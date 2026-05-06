@@ -9,7 +9,18 @@ public class Principal {
         p1.nome = "Ana";
         p1.saldo = 50.0;
 
-        // usando o método (ação)
+        System.out.println("=== INICIAL ===");
+        p1.exibirInformacoes();
+
+        // TESTES VÁLIDOS
+        p1.adicionarSaldo(20);
+        p1.debitarSaldo(30);
+
+        // TESTES INVÁLIDOS
+        p1.adicionarSaldo(-10);
+        p1.debitarSaldo(100);
+
+        System.out.println("=== FINAL ===");
         p1.exibirInformacoes();
     }
 }
