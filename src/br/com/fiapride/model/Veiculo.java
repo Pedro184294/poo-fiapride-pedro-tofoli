@@ -1,6 +1,6 @@
 package br.com.fiapride.model;
 
-public class Veiculo {
+public abstract class Veiculo { 
 
     protected String modelo;
     protected String placa;
@@ -18,8 +18,6 @@ public class Veiculo {
         return placa;
     }
 
-    // MÉTODO GENÉRICO
-    public String emitirSom() {
-        return "Som genérico de veículo";
-    }
+    // MÉTODO ABSTRATO (SEM IMPLEMENTAÇÃO)
+    public abstract String emitirSom();
 }

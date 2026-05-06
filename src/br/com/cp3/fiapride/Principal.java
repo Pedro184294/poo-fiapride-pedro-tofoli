@@ -11,13 +11,12 @@ public class Principal {
         Carro carro = new Carro("Toyota Corolla", "ABC-1234", 4);
         Moto moto = new Moto("Honda CG", "XYZ-9999", true);
 
-        // LISTA POLIMÓRFICA
         List<Veiculo> veiculos = new ArrayList<>();
 
         veiculos.add(carro);
         veiculos.add(moto);
 
-        System.out.println("=== TESTE POLIMORFISMO ===");
+        System.out.println("=== TESTE CLASSE ABSTRATA ===");
 
         for (Veiculo v : veiculos) {
             System.out.println(v.getModelo() + " - " + v.emitirSom());
