@@ -5,6 +5,16 @@ public class Passageiro {
     private String nome;
     private double saldo;
 
+    // 🔹 CONSTRUTOR PADRÃO
+    public Passageiro() {
+    }
+
+    // 🔹 CONSTRUTOR PERSONALIZADO (ESSENCIAL)
+    public Passageiro(String nome, double saldo) {
+        this.setNome(nome);
+        this.setSaldo(saldo);
+    }
+
     // GETTERS
     public String getNome() {
         return nome;
@@ -14,7 +24,7 @@ public class Passageiro {
         return saldo;
     }
 
-    // SETTERS COM VALIDAÇÃO
+    // SETTERS
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -27,13 +37,12 @@ public class Passageiro {
         this.saldo = saldo;
     }
 
-    // MÉTODO DE EXIBIÇÃO
+    // MÉTODOS
     public void exibirInformacoes() {
         System.out.println("Nome: " + nome);
         System.out.println("Saldo: " + saldo);
     }
 
-    // MÉTODO DE ADIÇÃO DE SALDO
     public void adicionarSaldo(double valor) {
         if (valor <= 0) {
             System.out.println("Valor inválido para adicionar!");
@@ -42,7 +51,6 @@ public class Passageiro {
         saldo += valor;
     }
 
-    // MÉTODO DE DÉBITO DE SALDO
     public void debitarSaldo(double valor) {
         if (valor <= 0) {
             System.out.println("Valor inválido para débito!");
