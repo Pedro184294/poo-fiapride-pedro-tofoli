@@ -4,15 +4,17 @@ public class Passageiro {
 
     private String nome;
     private double saldo;
+    private Veiculo veiculo; // 🔥 ASSOCIAÇÃO
 
-    // 🔹 CONSTRUTOR PADRÃO
+    // CONSTRUTOR PADRÃO
     public Passageiro() {
     }
 
-    // 🔹 CONSTRUTOR PERSONALIZADO (ESSENCIAL)
-    public Passageiro(String nome, double saldo) {
+    // CONSTRUTOR COM ASSOCIAÇÃO
+    public Passageiro(String nome, double saldo, Veiculo veiculo) {
         this.setNome(nome);
         this.setSaldo(saldo);
+        this.veiculo = veiculo;
     }
 
     // GETTERS
@@ -22,6 +24,10 @@ public class Passageiro {
 
     public double getSaldo() {
         return saldo;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
 
     // SETTERS
@@ -37,10 +43,18 @@ public class Passageiro {
         this.saldo = saldo;
     }
 
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+
     // MÉTODOS
     public void exibirInformacoes() {
         System.out.println("Nome: " + nome);
         System.out.println("Saldo: " + saldo);
+
+        if (veiculo != null) {
+            System.out.println("Veículo: " + veiculo.getModelo() + " - " + veiculo.getPlaca());
+        }
     }
 
     public void adicionarSaldo(double valor) {
