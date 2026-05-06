@@ -1,20 +1,26 @@
 package br.com.fiapride.model;
 
-public class Passageiro {
+public class Passageiro implements Pagavel {
 
     private String nome;
     private double saldo;
-    private Veiculo veiculo; // 🔥 ASSOCIAÇÃO
+    private Veiculo veiculo;
 
     // CONSTRUTOR PADRÃO
     public Passageiro() {
     }
 
-    // CONSTRUTOR COM ASSOCIAÇÃO
+    // CONSTRUTOR COMPLETO
     public Passageiro(String nome, double saldo, Veiculo veiculo) {
         this.setNome(nome);
         this.setSaldo(saldo);
         this.veiculo = veiculo;
+    }
+
+    // CONSTRUTOR SIMPLES (usado na Aula 9)
+    public Passageiro(String nome, double saldo) {
+        this.setNome(nome);
+        this.setSaldo(saldo);
     }
 
     // GETTERS
@@ -75,5 +81,11 @@ public class Passageiro {
             return;
         }
         saldo -= valor;
+    }
+
+    // INTERFACE
+    @Override
+    public double calcularPagamento() {
+        return saldo * Pagavel.TAXA;
     }
 }

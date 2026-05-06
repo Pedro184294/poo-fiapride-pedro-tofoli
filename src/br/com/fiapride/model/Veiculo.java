@@ -18,6 +18,5 @@ public abstract class Veiculo {
         return placa;
     }
 
-    // MÉTODO ABSTRATO (SEM IMPLEMENTAÇÃO)
     public abstract String emitirSom();
 }
