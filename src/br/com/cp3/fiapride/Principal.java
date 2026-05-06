@@ -1,23 +1,22 @@
 package br.com.cp3.fiapride;
 
-import br.com.fiapride.model.Passageiro;
-import br.com.fiapride.model.Veiculo;
+import br.com.fiapride.model.*;
 
 public class Principal {
 
     public static void main(String[] args) {
 
-        Veiculo v1 = new Veiculo("Toyota Corolla", "ABC-1234");
+        Carro carro = new Carro("Toyota Corolla", "ABC-1234", 4);
+        Moto moto = new Moto("Honda CG", "XYZ-9999", true);
 
-        Passageiro p1 = new Passageiro("Ana", 50.0, v1);
+        Passageiro p1 = new Passageiro("Ana", 50.0, carro);
 
-        System.out.println("=== INICIAL ===");
+        System.out.println("=== PASSAGEIRO COM CARRO ===");
         p1.exibirInformacoes();
 
-        p1.adicionarSaldo(20);
-        p1.debitarSaldo(30);
-
-        System.out.println("=== FINAL ===");
-        p1.exibirInformacoes();
+        System.out.println("\n=== TESTE MOTO ===");
+        System.out.println("Modelo: " + moto.getModelo());
+        System.out.println("Placa: " + moto.getPlaca());
+        System.out.println("Tem baú: " + moto.isTemBau());
     }
 }

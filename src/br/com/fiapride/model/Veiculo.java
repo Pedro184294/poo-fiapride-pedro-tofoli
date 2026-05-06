@@ -2,8 +2,8 @@ package br.com.fiapride.model;
 
 public class Veiculo {
 
-    private String modelo;
-    private String placa;
+    protected String modelo;
+    protected String placa;
 
     public Veiculo(String modelo, String placa) {
         this.modelo = modelo;
